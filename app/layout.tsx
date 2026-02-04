@@ -1,22 +1,23 @@
-
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bodoni_Moda, Lato } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bodoni = Bodoni_Moda({
   subsets: ["latin"],
+  variable: "--font-bodoni",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const lato = Lato({
   subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  variable: "--font-lato",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Glorious Walls - Premium Painting Service",
-  description: "Professional painting and wall treatments for your home.",
+  title: "Glorious Walls | Premium Installation",
+  description: "Artistry in every roll.",
 };
 
 export default function RootLayout({
@@ -25,17 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-slate-50`}
+        className={`${bodoni.variable} ${lato.variable} bg-cream text-navy-900 antialiased selection:bg-rose-300 selection:text-navy-900`}
       >
-        <Navbar />
-        <main className="flex-grow container mx-auto px-4 py-8">
-          {children}
-        </main>
-        <footer className="bg-slate-900 text-slate-400 py-6 text-center">
-          <p>&copy; {new Date().getFullYear()} Glorious Walls. All rights reserved.</p>
-        </footer>
+        {children}
       </body>
     </html>
   );
